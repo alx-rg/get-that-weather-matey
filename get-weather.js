@@ -1,16 +1,18 @@
 // Functions 
-function getWeather(apikey, zip, onSuccess, onError) {
+async function getWeather(apikey, zip, onSuccess, onError) {
   // Replace this with your own API key!
   // const apiKey = '467355df4c808dd6134a3b64e9ace282'
   const apiKey = apikey
   // const units = unit
   const units = 'imperial'     
   const path = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apiKey}&units=${units}`
-  fetch(path)
-    .then(res => res.json())
-    // return the json data as a callback
-    .then(onSuccess)
-    .catch(onError)
+  try {
+    const res = await fetch(path)
+    const data = await res.json()
+    return data
+  } catch(error) {
+    console.log(error.message)
+  }
 }
 
 export default getWeather

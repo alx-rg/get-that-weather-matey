@@ -41,35 +41,13 @@
         const zip = zipInput.value
         const apikey = '532890599a817d71d42d024da67c3160'
         
-        const handleData = (data) => {
+        
+        getWeather(apikey, zip).then((data) => {
           tempEl.innerHTML = data.main.temp
           descEl.innerHTML = data.weather[0].description      
-        }
-        const handleError = err => console.log(err.message)
-        
-        getWeather(apikey, zip, handleData, handleError)
-
+        })
       })
-
-    //   // Functions 
-    // function getWeather(apikey, zip) {
-    //   // Replace this with your own API key!
-    //   const apiKey = apikey
-    //   const units = 'imperial'
-    //   // const units = 'imperial'
-    //   const path = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apiKey}&units=${units}`
-    //   fetch(path)
-    //     .then(res => res.json())
-    //     .then(json => {
-    //       tempEl.innerHTML = json.main.temp
-    //       descEl.innerHTML = json.weather[0].description
-    //     })
-    //     .catch(err => console.log(err.message))
-    //   console.log(path)
-
-    //   
-    // }
-           
+          
     </script>
   </body>
 </html>
