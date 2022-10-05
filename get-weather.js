@@ -9,7 +9,14 @@ async function getWeather(apikey, zip, onSuccess, onError) {
   try {
     const res = await fetch(path)
     const data = await res.json()
-    return data
+    console.log(data)
+    return {
+      city: data.name,
+      temp: data.main.temp,
+      description: data.weather[0].description,
+      feels_like: data.main.feels_like,
+      country: data.sys.country
+    }
   } catch(error) {
     console.log(error.message)
   }

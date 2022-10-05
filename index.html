@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ms Merriweather</title>
+    <title>Weather Matey</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <div class="container">
-      <h1 id="temp">
-        <!--Temp -->
+      <h1 id="city">
+        <!--City -->
       </h1>
+      <h3 id="feel">
+        <!--City -->
+      </h3>
+      <h4 id="temp">
+        <!--Temp -->
+      </h4>
       <p id="desc">
         <!-- description -->
       </p>
@@ -33,6 +39,8 @@
       const tempEl = document.getElementById('temp')
       const descEl = document.getElementById('desc')
       const formEl = document.getElementById('form')
+      const cityEl = document.getElementById('city')
+      const feelEl = document.getElementById('feel')
       const zipInput = document.getElementById('zip')
 
       // Define event listeners
@@ -43,8 +51,10 @@
         
         
         getWeather(apikey, zip).then((data) => {
-          tempEl.innerHTML = data.main.temp
-          descEl.innerHTML = data.weather[0].description      
+          tempEl.innerHTML = `But it's actually ${data.temp}`
+          descEl.innerHTML = `Outside looks like ${data.description}`    
+          cityEl.innerHTML = `@ ${data.city} (${data.country})`
+          feelEl.innerHTML = `Right now it feels like ${data.feels_like}`
         })
       })
           
