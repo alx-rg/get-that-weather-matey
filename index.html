@@ -21,10 +21,10 @@
       <form id="form">
         <input 
           id="zip" 
-          type="number" 
-          placeholder="zip code"
-          title="Please Enter a valid Zip Code"
-          pattern="^\d{5}(?:[-\s]\d{4})?$"
+          type="string" 
+          placeholder="City name like Winnipeg"
+          title="Please Enter a valid City name"
+          pattern="[a-zA-Z]+"
         >
         <button type="submit">Search</button>
       </form>
@@ -48,10 +48,10 @@
         e.preventDefault()
         const zip = zipInput.value
         const apikey = '532890599a817d71d42d024da67c3160'
+        const units = 'standard' 
         
-        
-        getWeather(apikey, zip).then((data) => {
-          tempEl.innerHTML = `But it's actually ${data.temp}`
+        getWeather(apikey, zip, units).then((data) => {
+          tempEl.innerHTML = `And it's actually ${data.temp}`
           descEl.innerHTML = `Outside looks like ${data.description}`    
           cityEl.innerHTML = `@ ${data.city} (${data.country})`
           feelEl.innerHTML = `Right now it feels like ${data.feels_like}`
